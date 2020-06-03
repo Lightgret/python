@@ -97,7 +97,7 @@ efgh
 >>> get_row('cat\ndog\nyasir\n' , 2)
 yasir
 """
-puzzle_adjusted = puzzle.strip().split('\n')
-string_index = (row * get_row_length(puzzle))
+
+string_index = row * (get_row_length(puzzle)+1)
 last_index = string_index + get_row_length(puzzle)
-return puzzle_adjusted[string_index:last_index]
+return puzzle[string_index:last_index]
