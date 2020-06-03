@@ -13,11 +13,11 @@ UP_FACTOR = 4
 def get_factor(direction : str) -> int:
  if direction == FORWARD:
   return FORWARD_FACTOR
- elseif direction == DOWN:
+ elif direction == DOWN:
   return DOWN_FACTOR 
- elseif direction == BACKWARD:
+ elif direction == BACKWARD:
   return BACKWARD_FACTOR 
- elseif direction == UP:
+ elif direction == UP:
   return UP_FACTOR
  else:
   return 'invalid direction'
