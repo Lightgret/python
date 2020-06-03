@@ -103,7 +103,7 @@ last_index = string_index + get_row_length(puzzle)
 return puzzle[string_index:last_index]
 
 #FROM ME
-def get_factor(direction : str) -> int
+def get_factor(direction : str) -> int:
  if direction == FORWARD
   return FORWARD_FACTOR
  elseif direction == DOWN
@@ -114,3 +114,9 @@ def get_factor(direction : str) -> int
   return UP_FACTOR
  else
   return 'invalid direction'
+
+
+
+
+
+
