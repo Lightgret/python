@@ -1,11 +1,11 @@
-get_factor(direction : str) -> int
-  if direction == FORWARD
-    return 1
-  elseif direction == DOWN
-    return 2
-  elseif direction == BACKWARD
-    return 3
-  elseif direction == UP
-    return 4
-  else
+def get_factor(direction : str) -> int:
+  if direction == FORWARD:
+    return FORWARD_FACTOR 
+  elif direction == DOWN:
+    return DOWN_FACTOR 
+  elif direction == BACKWARD:
+    return BACKWARD_FACTOR 
+  elif direction == UP:
+    return UP_FACTOR 
+  else:
     return 'invalid direction'
