@@ -1,5 +1,17 @@
 check_guess(puzzle:str, direction:str, guessed_word:str, location:int, words_left:int) -> int:
 
+ '''
+like first your code will check if guessed_word 
+inside puzzle using contains function (helper function ) 
+step 2 if it's there then check which row or column 
+it was in and in which direction? 
+if row col number and directions matches users
+ given direction and row col number 
+then return result else return 0
+'''
+
+
+
 check_guess (puzzle :str, guessed_word :str)
 
 print  (print_puzzle(puzzle))
