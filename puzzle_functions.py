@@ -245,16 +245,41 @@ row_or_col_num:int, num_words_left:int) -> int:
         
         
 
-print(check_guess('abcd\nefgh\nijkl\n', 'forward', 'ijkl', 2, 3)
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'ijkl', 2, 4))
         
-print(check_guess('abcd\nefgh\nijkl\n', 'forward', 'abcd', 0, 3)
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'abcd', 0, 3))
 
-print(check_guess('abcd\nefgh\nijkl\n', 'forward', 'efgh', 1, 3)
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'efgh', 1, 2))
       
-               
-               
             
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'lkji', 2, 4))
         
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'dcba', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'hgfe', 1, 2))
+
+               
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'ijkl', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'abcd', 0, 4))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'efgh', 1, 4))
+
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'cgko', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'aeim', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'bfjn', 1, 2))
+
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'okgc', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'miea', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'efgh', 1, 2))
+     
+    
     
     
     
