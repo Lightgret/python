@@ -93,4 +93,17 @@ def print_puzzle(puzzle: str) -> None:
     print()
 
 
+def contains(text1: str, text2: str) -> bool:
+    """Return whether text2 appears anywhere in text1.
+
+    >>> contains('abc', 'bc')
+    True
+    >>> contains('abc', 'cb')
+    False
+    """
+
+    return text2 in text1
+
+pz= 'abcd\nefgh\nijkl\n'
 print  (print_puzzle('abcd\nefgh\nijkl\n')
+print  (contains (pz, jk))
