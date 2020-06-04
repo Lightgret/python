@@ -88,5 +88,199 @@ def get_current_player(player_one_turn: bool) -> str:
     """
 
     # Complete this function.
+    if player_one_turn is True: 
+        return P1
+     
+    return P2 
+
+def get_winner(player_one_score:int, player_two_score:int) -> str:
+    '''
+    'return which player wins given who scores the most. If the score is tied return tie game'(check the statement)
+    >>> get_winner(24, 22)
+    'player one wins'
+    >>> get_winner(23, 25)
+    'player two wins'
+    '''
+    
+    if player_one_score > player_two_score:
+        return P1_WINS
+    
+    elif player_one_score < player_two_score:
+        return P2_WINS
+    
+    return TIE
+    
+    
+    
+def reverse(word:str) -> str:
+    
+    '''
+    return the reverse of the given word is inside the function reverse(word)
+    >>> reverse(cat)
+    'tac'
+    '''
+    return word[::-1]
+
+    
+def get_row(puzzle:str, row:int) -> int:
+    """ return the word in the given row of the puzzle. 
+    Given that the row length is the same.
+    
+    >>> get_row('abcd\nefgh\nnijkl\n', 1)
+    efgh
+    
+    >>> get_row('cat\ndog\nyas\n' , 2)
+    yas
+    """
+
+    string_index = row * (get_row_length(puzzle)+1)
+    last_index = string_index + get_row_length(puzzle) 
+    
+    return puzzle[(string_index):(last_index)]
+
+
+def get_factor(direction : str) -> int:
+    '''
+    return the factor value of direction
+    
+    >>> get_factor('up')
+    4
+    >>> get_factor('down')
+    2
+    '''
+    if direction is FORWARD:
+        return FORWARD_FACTOR
+    elif direction is DOWN:
+        return DOWN_FACTOR 
+    elif direction is BACKWARD:
+        return BACKWARD_FACTOR 
+    elif direction is UP:
+        return UP_FACTOR
+        
+    return 'invalid direction'
+
+
+
+
+def get_points(direction:str, num_words_left:int ) -> int :
+    '''
+    Return the points that a player will receive 
+    if a certain direction is chosen, 
+    given the number of words left to be found.
+    >>> get_factor('up')
+    4
+    >>> get_factor('down')
+    2
+    '''
+    factor_point = get_factor(direction)
+    
+    if num_words_left >= THRESHOLD:
+        return THRESHOLD * factor_point    
+    elif num_words_left is 1:
+        return ((2 * THRESHOLD - num_words_left) * factor_point) + BONUS
+    
+     
+    return (2 * THRESHOLD - num_words_left) * factor_point
+    
+
+def check_guess(puzzle:str, direction:str, guess:str,
+row_or_col_num:int, num_words_left:int) -> int:
+    '''
+    >>> check_guess(
+    don't know yet
+    >>> 
+    question is direction
+    '''
+    
+    '''if direction is 'up' or direction is'down':
+        col_num = row_or_col_num
+    elif direction is 'forward' or direction is'backward':
+        row = row_or_col_num'''
+    
+    if  direction is 'up':
+        col_num = row_or_col_num
+        word = get_column(puzzle, col_num)
+        text2 = reverse(word)
+        if guess in text2:    
+            return get_points(direction, num_words_left)
+    
+        
+    
+    elif direction is 'down':
+        col_num = row_or_col_num
+        text2 = get_column(puzzle, col_num)
+        if guess in text2:
+            return get_points(direction, num_words_left)
+        else:
+            return 0
+        
+        
+    
+    elif direction is 'forward':
+        row = row_or_col_num
+        text2 = get_row(puzzle, row)
+        if guess in text2:
+            return get_points(direction, num_words_left)
+        else:
+            return 0
+        
+    
+    elif direction is 'backward':
+        row = row_or_col_num
+        word = get_row(puzzle, row)
+        text1 = reverse(word)
+        if guess in text2:
+            return get_points(direction, num_words_left)
+        else:
+            return 0
+        
+    return 0
+        
+    
+
+        
+    ''''if contains(text1, text2) is True:
+        return get_points(direction, num_words_left)
+    return 0'''
+        
+        
+
+    
+        
+    
+               
+               
+            
+        
+    
+    
+    
+    
+   
+    
+ 
+    
+    
+    
+
+    
+    
+
+    
+
+# don't use 
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
 
 
