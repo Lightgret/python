@@ -185,19 +185,14 @@ def get_points(direction:str, num_words_left:int ) -> int :
 
 def check_guess(puzzle:str, direction:str, guess:str,
 row_or_col_num:int, num_words_left:int) -> int:
-    '''
-    >>> check_guess(
-    don't know yet
-    >>> 
-    question is direction
-    '''
+    
     
     '''if direction is 'up' or direction is'down':
         col_num = row_or_col_num
     elif direction is 'forward' or direction is'backward':
         row = row_or_col_num'''
     
-    if  direction is UP:
+    if  direction == UP:
         col_num = row_or_col_num
         word = get_column(puzzle, col_num)
         text2 = reverse(word)
@@ -206,7 +201,7 @@ row_or_col_num:int, num_words_left:int) -> int:
     
         
     
-    elif direction is DOWN :
+    elif direction == DOWN :
         col_num = row_or_col_num
         text2 = get_column(puzzle, col_num)
         if guess in text2:
@@ -216,7 +211,7 @@ row_or_col_num:int, num_words_left:int) -> int:
         
         
     
-    elif direction is FORWARD :
+    elif direction == FORWARD :
         row = row_or_col_num
         text2 = get_row(puzzle, row)
         if guess in text2:
@@ -225,7 +220,7 @@ row_or_col_num:int, num_words_left:int) -> int:
             return 0
         
     
-    elif direction is BACKWARD :
+    elif direction == BACKWARD :
         row = row_or_col_num
         word = get_row(puzzle, row)
         text1 = reverse(word)
@@ -281,34 +276,6 @@ print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'efgh', 1, 2))
      
     
     
-    
-    
-    
-   
-    
- 
-    
-    
-    
 
-    
-    
-
-    
-
-# don't use 
-
-
-
-
-    
-    
-    
-    
-
-    
-    
-    
-    
 
 
