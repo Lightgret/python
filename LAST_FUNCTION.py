@@ -1,4 +1,4 @@
-check_guess(puzzle:str, direction:str, guessed_word:str, location:int, words_left:int) -> int:
+def check_guess(puzzle:str, direction:str, guessed_word:str, location:int, words_left:int) -> int:
 
  '''
 like first your code will check if guessed_word 
@@ -9,21 +9,14 @@ if row col number and directions matches users
  given direction and row col number 
 then return result else return 0
 '''
-
-
-
-check_guess (puzzle :str, guessed_word :str)
-
-print  (print_puzzle(puzzle))
-if contains (puzzle, guessed_word ) == TRUE:
-  print  ('yes it worked')
-else:
-  print  ("nope, not eorking")
-
- if guessed_word : 
-  return points_earned
-else:
+ if contains(puzzle, guessed_word)== 1:
+   if guessed_word_direction && guessed_word_location == user_direction && user_location :
+     return calculation based on given_word_left
+ else:
   return 0
+
+
+
 
 """ the helper function I may need
 get puzzle row
