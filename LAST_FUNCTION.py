@@ -18,6 +18,20 @@ then return result else return 0
 
 
 
+def check_guess(puzzle:str, direction:str, guessed_word:str, location:int, words_left:int) -> int:
+ if contains(puzzle, guessed_word)== 1:
+   return 'successful '
+ else:
+   return 'error'
+
+
+pz = 'abcd\nefgh\nijkl\nmnop\n'
+check_guess(pk, 'forward', 'efgh', 1, 3)
+
+
+
+
+
 """ the helper function I may need
 get puzzle row
 get puzzle column 
