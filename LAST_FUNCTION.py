@@ -1,6 +1,12 @@
 check_guess(puzzle:str, direction:str, guessed_word:str, location:int, words_left:int) -> int:
 
+check_guess (puzzle :str, guessed_word :str)
+
 print  (print_puzzle(puzzle))
+if contains (puzzle, guessed_word ) == TRUE:
+  print  ('yes it worked')
+else:
+  print  ("nope, not eorking")
 
  if guessed_word : 
   return points_earned
