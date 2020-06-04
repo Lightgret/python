@@ -197,7 +197,7 @@ row_or_col_num:int, num_words_left:int) -> int:
     elif direction is 'forward' or direction is'backward':
         row = row_or_col_num'''
     
-    if  direction is 'up':
+    if  direction is UP:
         col_num = row_or_col_num
         word = get_column(puzzle, col_num)
         text2 = reverse(word)
@@ -206,7 +206,7 @@ row_or_col_num:int, num_words_left:int) -> int:
     
         
     
-    elif direction is 'down':
+    elif direction is DOWN :
         col_num = row_or_col_num
         text2 = get_column(puzzle, col_num)
         if guess in text2:
@@ -216,7 +216,7 @@ row_or_col_num:int, num_words_left:int) -> int:
         
         
     
-    elif direction is 'forward':
+    elif direction is FORWARD :
         row = row_or_col_num
         text2 = get_row(puzzle, row)
         if guess in text2:
@@ -225,7 +225,7 @@ row_or_col_num:int, num_words_left:int) -> int:
             return 0
         
     
-    elif direction is 'backward':
+    elif direction is BACKWARD :
         row = row_or_col_num
         word = get_row(puzzle, row)
         text1 = reverse(word)
