@@ -245,9 +245,12 @@ row_or_col_num:int, num_words_left:int) -> int:
         
         
 
-    
+print(check_guess('abcd\nefgh\nijkl\n', 'forward', 'ijkl', 2, 3)
         
-    
+print(check_guess('abcd\nefgh\nijkl\n', 'forward', 'abcd', 0, 3)
+
+print(check_guess('abcd\nefgh\nijkl\n', 'forward', 'efgh', 1, 3)
+      
                
                
             
