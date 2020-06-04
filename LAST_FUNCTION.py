@@ -8,7 +8,8 @@ else:
 get puzzle row
 get puzzle column 
 get_directions
-get_points 
+get_points
+
 
 The first parameter represents the puzzle, 
 the second represents a
