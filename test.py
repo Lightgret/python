@@ -20,6 +20,61 @@ TIE = 'tie game'
 
 PUZZLE_FILE = 'puzzle1.txt'
 
+#----------FUNCTION FROM OTHER FILE--------
+
+def get_num_rows(puzzle: str) -> int:
+    """Return the number of rows in puzzle.
+
+    puzzle is a game board.
+
+    >>> get_num_rows('abcd\nefgh\nijkl\n')
+    3
+    """
+
+    return puzzle.count('\n')
+
+
+def get_num_cols(puzzle: str) -> int:
+    """Return the number of columns in puzzle.
+
+    puzzle is a game board.
+
+    >>> get_num_cols('abcd\nefgh\nijkl\n')
+    4
+
+    """
+
+    return puzzle.index('\n')
+
+
+def print_puzzle(puzzle: str) -> None:
+    """Print the puzzle with row and column numbers and two spaces between
+    each letter.
+
+    """
+
+    # Split puzzle into rows and get dimensions.
+    puzzle_rows = puzzle.strip().split('\n')
+    num_rows = get_num_rows(puzzle)
+    num_columns = get_num_cols(puzzle)
+
+    # Print the column headings.
+    print('   ', end='')
+    for col_number in range(num_columns):
+        print(col_number, ' ', end='')
+
+    print()
+
+    # Print each row number and row.
+    for row_number in range(num_rows):
+        print(row_number, end='  ')
+        print('  '.join(puzzle_rows[row_number]))
+
+    print()
+
+
+#----------FUNCTION FROM OTHER FILE--------
+
 
 # Helper functions.  Do not modify these, although you are welcome to
 # call them!
@@ -190,8 +245,12 @@ row_or_col_num:int, num_words_left:int) -> int:
         return get_points(direction, num_words_left)
     return 0'''
         
-        
+  
 
+pz =('abcd\nefgh\nijkl\nmnop\nqrst\n')
+print(print_puzzle(pz)
+
+'''
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'ijkl', 2, 4))
         
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'abcd', 0, 3))
@@ -227,7 +286,7 @@ print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'miea', 0, 3))
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'efgh', 1, 2))
      
     
-    
+    '''
 
 
 
