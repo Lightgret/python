@@ -1,67 +1,233 @@
 
-get_current_player(player:bool) -> str
-Already Done
-get_winner(player1:int, player2:int) -> str
-If player1 > player2
-return P1_WINS
-elseif player1< player2
-return P2_WINS
-else
-return TIE
-reverse(word:str) -> str
-Working on it
-get_row(puzzle:str, row_num:int) -> str
-Use helper function that will create pluzzel matrix
-return another helper function
-I'm trying it now… .
-get_factor(direction : str) -> int
-If direction == FORWARD
-return 1
-elseif direction == DOWN
-return 2
-elseif direction == BACKWARD
-return 3
-elseif direction == UP
-return 4
-else
-return 'invalid direction'
-Return the multiplicative factor
-associated with this direction.
-THRESHOLD IS OUR MIDDLE GROUND. lets assume we choose our middle ground to be no
-5.
-Now when game starts, if 5 or more then 5 words left to be found the we simlpy multiply
-THRESHOLD * direction.
-Lets suppose we need to find 7 words.
+UP = 'up'
+DOWN = 'down'
+FORWARD = 'forward'
+BACKWARD = 'backward'
 
-7 words left to find….
-First word found in some direction .
-Score = THRESHOLD * direction
-6 words left to find….
-Second word found in some direction
-Score = THRESHOLD * direction
-5 words left to find….
-Third word found in some direction .
-Score = THRESHOLD * direction
-4 words left to find….
-now that there are less than 5 words left to find we will change our calculation.
-Fourth word found in some direction .
-Score = (2*THRESHOLD - 4) * direction
-3 words left to find….
-Third word found in some direction .
-Score = (2*THRESHOLD - 3) * direction
-2 words left to find….
-Second word found in some direction .
-Score = (2*THRESHOLD - 2) * direction
-1 words left to find….
-Last word found in some direction .
-Score = (2*THRESHOLD - 1) * direction + BONUS
-0 words left to find….
-Game end
-Only the last word gets the bonus point.
-get_points(direction:str, word_left: int) ->int
-if word_left == 1
-return (2*THRESHOLD - word_left) * direction + BONUS
-elseif word_left >= THRESHOLD
-return THRESHOLD * direction
-else
-return (2*THRESHOLD - word_left) * direction
+FORWARD_FACTOR = 1
+DOWN_FACTOR = 2
+BACKWARD_FACTOR = 3
+UP_FACTOR = 4
+
+THRESHOLD = 5
+BONUS = 12
+
+P1 = 'player one'
+P2 = 'player two'
+P1_WINS = 'player one wins'
+P2_WINS = 'player two wins'
+TIE = 'tie game'
+
+PUZZLE_FILE = 'puzzle1.txt'
+
+
+# Helper functions.  Do not modify these, although you are welcome to
+# call them!
+
+def get_column(puzzle: str, col_num: int) -> str:
+    """Return column col_num of puzzle.
+
+    Precondition: 0 <= col_num < number of columns in puzzle
+
+    >>> get_column('abcd\nefgh\nijkl\n', 1)
+    'bfj'
+    """
+
+    puzzle_list = puzzle.strip().split('\n')
+    column = ''
+    for row in puzzle_list:
+        column += row[col_num]
+
+    return column
+
+
+def get_row_length(puzzle: str) -> int:
+    """Return the length of a row in puzzle.
+
+    >>> get_row_length('abcd\nefgh\nijkl\n')
+    4
+    """
+
+    return len(puzzle.split('\n')[0])
+
+
+def contains(text1: str, text2: str) -> bool:
+    """Return whether text2 appears anywhere in text1.
+
+    >>> contains('abc', 'bc')
+    True
+    >>> contains('abc', 'cb')
+    False
+    """
+
+    return text2 in text1
+
+
+# Implement the required functions below.
+
+def get_current_player(player_one_turn: bool) -> str:
+    """Return 'player one' iff player_one_turn is True; otherwise, return
+    'player two'.
+
+    >>> get_current_player(True)
+    'player one'
+    >>> get_current_player(False)
+    'player two'
+    """
+
+    # Complete this function.
+    if player_one_turn is True: 
+        return P1
+     
+    return P2 
+
+def get_winner(player_one_score:int, player_two_score:int) -> str:
+    
+    if player_one_score > player_two_score:
+        return P1_WINS
+    
+    elif player_one_score < player_two_score:
+        return P2_WINS
+    
+    return TIE
+    
+    
+    
+def reverse(word:str) -> str:
+
+    return word[::-1]
+
+    
+def get_row(puzzle:str, row:int) -> int:
+
+    string_index = row * (get_row_length(puzzle)+1)
+    last_index = string_index + get_row_length(puzzle) 
+    
+    return puzzle[(string_index):(last_index)]
+
+
+def get_factor(direction : str) -> int:
+    
+    if direction is FORWARD:
+        return FORWARD_FACTOR
+    elif direction is DOWN:
+        return DOWN_FACTOR 
+    elif direction is BACKWARD:
+        return BACKWARD_FACTOR 
+    elif direction is UP:
+        return UP_FACTOR
+        
+    return 'invalid direction'
+
+
+
+
+def get_points(direction:str, num_words_left:int ) -> int :
+ 
+    factor_point = get_factor(direction)
+    
+    if num_words_left >= THRESHOLD:
+        return THRESHOLD * factor_point    
+    elif num_words_left is 1:
+        return ((2 * THRESHOLD - num_words_left) * factor_point) + BONUS
+    
+     
+    return (2 * THRESHOLD - num_words_left) * factor_point
+    
+
+def check_guess(puzzle:str, direction:str, guess:str,
+row_or_col_num:int, num_words_left:int) -> int:
+    
+    
+    '''if direction is 'up' or direction is'down':
+        col_num = row_or_col_num
+    elif direction is 'forward' or direction is'backward':
+        row = row_or_col_num'''
+    
+    if  direction == UP:
+        col_num = row_or_col_num
+        word = get_column(puzzle, col_num)
+        text2 = reverse(word)
+        if guess in text2:    
+            return get_points(direction, num_words_left)
+    
+        
+    
+    elif direction == DOWN :
+        col_num = row_or_col_num
+        text2 = get_column(puzzle, col_num)
+        if guess in text2:
+            return get_points(direction, num_words_left)
+        else:
+            return 0
+        
+        
+    
+    elif direction == FORWARD :
+        row = row_or_col_num
+        text2 = get_row(puzzle, row)
+        if guess in text2:
+            return get_points(direction, num_words_left)
+        else:
+            return 0
+        
+    
+    elif direction == BACKWARD :
+        row = row_or_col_num
+        word = get_row(puzzle, row)
+        text1 = reverse(word)
+        if guess in text2:
+            return get_points(direction, num_words_left)
+        else:
+            return 0
+        
+    return 0
+        
+    
+
+        
+    ''''if contains(text1, text2) is True:
+        return get_points(direction, num_words_left)
+    return 0'''
+        
+        
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'ijkl', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'abcd', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'efgh', 1, 2))
+      
+            
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'lkji', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'dcba', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'hgfe', 1, 2))
+
+               
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'ijkl', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'abcd', 0, 4))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'efgh', 1, 4))
+
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'cgko', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'aeim', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'bfjn', 1, 2))
+
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'okgc', 2, 4))
+        
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'miea', 0, 3))
+
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'efgh', 1, 2))
+     
+    
+    
+
+
+
