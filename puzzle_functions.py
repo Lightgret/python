@@ -206,7 +206,7 @@ row_or_col_num:int, num_words_left:int) -> int:
     elif direction == DOWN :
         col_num = row_or_col_num
         text2 = get_column(puzzle, col_num)
-        if contains (text2, guess):
+        if guess in text2:
             return get_points(direction, num_words_left)
         else:
             return 0
@@ -225,13 +225,14 @@ row_or_col_num:int, num_words_left:int) -> int:
     elif direction == BACKWARD :
         row = row_or_col_num
         word = get_row(puzzle, row)
-        text1 = reverse(word)
-        if contains (text2, guess):
+        text2 = reverse(word)
+        if guess in text2:
             return get_points(direction, num_words_left)
         else:
             return 0
         
-    return 'error'
+    else :
+       return 'code glitch'
         
     
 
@@ -251,24 +252,25 @@ print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'efgh', 1, 2))
             
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'lkji', 2, 4))
         
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'dcba', 0, 3))
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'dcba', 0, 1))
 
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'hgfe', 1, 2))
 
                
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'ijkl', 2, 4))
         
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'abcd', 0, 4))
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'abcd', 0, 5))
 
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'efgh', 1, 4))
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'hgfe', 0, 4))
 
 
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'cgko', 2, 4))
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'cgk', 2, 4))
         
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'aeim', 0, 3))
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'aeim', 0, 1))
 
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'bfjn', 1, 2))
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'bfjn', 1, 5))
 
+print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'bfjn', 3, 5))
 
 print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'okgc', 2, 4))
         
