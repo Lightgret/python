@@ -248,45 +248,26 @@ row_or_col_num:int, num_words_left:int) -> int:
   
 
 pz =('abcd\nefgh\nijkl\nmnop\nqrst\n')
-print(print_puzzle(pz)
+print(print_puzzle(pz))
 
-'''
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'ijkl', 2, 4))
-        
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'abcd', 0, 3))
+print(check_guess(pz, 'forward', 'ijkl', 2, 4))
+print(check_guess(pz, 'forward', 'cd', 0, 5))
+print(check_guess(pz, 'forward', 'mno', 3, 1))
+print(check_guess(pz, 'forward', 'uk', 0, 5))
 
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'forward', 'efgh', 1, 2))
-      
-            
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'lkji', 2, 4))
-        
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'dcba', 0, 3))
+print(check_guess(pz, 'up', 'njf', 1, 4))
+print(check_guess(pz, 'up', 'mi', 0, 5))
+print(check_guess(pz, 'up', 'okg', 2, 1))
+print(check_guess(pz, 'up', 'uk', 3, 2))
 
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'hgfe', 1, 2))
+print(check_guess(pz, 'backward ', 'kji', 2, 4))
+print(check_guess(pz, 'backward ', 'dcba', 0, 5))
+print(check_guess(pz, 'backward ', 'on', 3, 1))
+print(check_guess(pz, 'backward ', 'uk', 0, 5))
 
-               
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'ijkl', 2, 4))
-        
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'abcd', 0, 4))
+print(check_guess(pz, 'down ', 'cg', 2, 4))
+print(check_guess(pz, 'down ', 'ae', 0, 5))
+print(check_guess(pz, 'down ', 'dhkp', 3, 1))
+print(check_guess(pz, 'down ', 'uk', 0, 5))
 
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'backward', 'efgh', 1, 4))
-
-
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'cgko', 2, 4))
-        
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'aeim', 0, 3))
-
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'down', 'bfjn', 1, 2))
-
-
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'okgc', 2, 4))
-        
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'miea', 0, 3))
-
-print(check_guess('abcd\nefgh\nijkl\nmnop\n', 'up', 'efgh', 1, 2))
-     
-    
-    '''
-
-
-
+         
